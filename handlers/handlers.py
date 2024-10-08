@@ -6,15 +6,10 @@ from config import *
 
 
 def register_handlers(dp: Dispatcher):
-    # Command Handlers
     dp.message.register(start, CommandStart())
     dp.callback_query.register(start_callback, lambda c: c.data == "index")
-
-    # Admin Panel Handlers
+    dp.message.register(search_movie_by_code_handler,lambda m: user_states.get(m.from_user.id, {}).get('state') == 'searching_movie')
     dp.message.register(admin_panel, lambda message: message.text == "/panel")
-
-    dp.message.register(search_movie_by_code_handler,lambda message: isinstance(user_states.get(message.from_user.id), dict) and user_states[message.from_user.id].get('state') == 'searching_movie')
-
     dp.callback_query.register(callback_handler, lambda c: c.data == 'azo')  # Statistics handler
     dp.callback_query.register(add_movie_start, lambda c: c.data == 'add_movie')  # Add movie start handler
     dp.callback_query.register(send_message_prompt, lambda c: c.data == 'send_message')  # Send message prompt handler
