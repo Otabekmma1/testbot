@@ -12,14 +12,18 @@ async def check_subscription(user_id):
     for channel in channels:
         chat_id = channel['channel_id']
         try:
+            # Get the chat member's status
             chat_member = await bot.get_chat_member(chat_id=chat_id, user_id=user_id)
+
+            # Check if user is not a member (either left or kicked)
             if chat_member.status in ['left', 'kicked']:
                 return False  # User is not subscribed
         except Exception as e:
             logging.error(f"Error checking subscription for channel {chat_id}: {e}")
-            return False  # Assume not subscribed if an error occurs
+            # Continue checking other channels instead of returning False immediately
 
     return True  # User is subscribed to all channels
+
 
 
 
