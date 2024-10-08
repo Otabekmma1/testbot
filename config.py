@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TOKEN = '6565102114:AAHc6MfFofOoZXGDfHFvdmHmzr0i-0zsvj4'
+TOKEN = '7511166749:AAFpmGAOmBHSKf6UPaT1cLIGmwv6sNMoi_I'
 ADMINS=[5541564692, 6565102114]
 
 bot = Bot(token=TOKEN)
