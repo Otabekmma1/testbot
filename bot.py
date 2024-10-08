@@ -10,12 +10,12 @@ logging.basicConfig(level=logging.INFO, handlers=[
 ])
 
 async def on_startup():
-    await db.create()  # Establish database connection
     await db.create_table_users()  # Create users table if not exists
     await db.create_table_movies()  # Create movies table if not exists
     await db.create_table_channels()
 
 async def main():
+    await db.create()  # Establish database connection
     await on_startup()
     register_handlers(dp)
 

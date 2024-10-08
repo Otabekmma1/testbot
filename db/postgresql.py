@@ -5,7 +5,7 @@ from asyncpg.pool import Pool
 import config
 from typing import Union, List, Dict, Any
 
-
+import logging
 class Database:
 
     def __init__(self):

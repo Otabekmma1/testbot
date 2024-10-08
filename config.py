@@ -7,9 +7,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TOKEN = os.getenv("TELEGRAM_TOKEN")
-ADMINS = os.getenv("ADMINS").strip('[]').split(',')
-
+TOKEN = '6565102114:AAHc6MfFofOoZXGDfHFvdmHmzr0i-0zsvj4'
+ADMINS=[5541564692, 6565102114]
 
 bot = Bot(token=TOKEN)
 storage = MemoryStorage()
@@ -20,6 +19,4 @@ DB_USER = os.getenv('DB_USER')
 DB_PASS = os.getenv('DB_PASS')
 DB_HOST = os.getenv('DB_HOST')
 DB_NAME = os.getenv('DB_NAME')
-
-DATABASE_URL = f'postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}'
-
+DB_PORT = os.getenv('DB_PORT')
