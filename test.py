@@ -5,7 +5,7 @@ async def test_connection():
         user='coder',
         password='eeS30AfQ2OrczWUTCMTFL23GDjK1urwN',
         database='coderdb_ljno',
-        host='localhost',
+        host='dpg-crhdn8dsvqrc738c7pt0-a',
         port=5432,
     )
     await conn.close()
