@@ -122,3 +122,13 @@ async def callback_handler(callback_query: CallbackQuery):
         await send_subscription_prompt(callback_query.message)
 
 
+async def admin_panel(message: Message):
+    user_id = message.from_user.id
+    if int(user_id) not in ADMINS:
+        await message.answer("Sizda admin panelga kirish huquqi mavjud emas.")
+        return
+
+    keyboard = admin_keyboard()
+    user_states[user_id] = {'state': 'admin_panel'}
+
+    await message.answer("Admin panel:", reply_markup=keyboard)

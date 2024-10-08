@@ -38,16 +38,7 @@ async def process_back(callback_query: CallbackQuery):
 
 
 
-async def admin_panel(message: Message):
-    user_id = message.from_user.id
-    if int(user_id) not in ADMINS:
-        await message.answer("Sizda admin panelga kirish huquqi mavjud emas.")
-        return
 
-    keyboard = admin_keyboard()
-    user_states[user_id] = {'state': 'admin_panel'}
-
-    await message.answer("Admin panel:", reply_markup=keyboard)
 async def send_message_prompt(callback_query: CallbackQuery):
     """Handler for the 'send_message' button - prompts admin to send a message."""
     await callback_query.message.answer("Xabar yuborish uchun xabar matnini yuboring (text, file, MP4, MP3).")

@@ -5,6 +5,7 @@ from handlers.user_handlers import command_start_handler
 from keyboards.default import *
 from keyboards.inline import *
 from .admin_pan import *
+from .user_handlers import *
 
 async def manage_movie(callback_query: CallbackQuery):
     user_id = callback_query.from_user.id

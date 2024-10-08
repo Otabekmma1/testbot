@@ -5,16 +5,9 @@ from keyboards.default import *
 from states import *
 from subscrition import *
 from .admin_pan import *
+from .user_handlers import *
 
-async def command_start_handler(message: Message, first_name: str):
-    user_id = message.from_user.id
-    if await check_subscription(user_id):
-        keyboard = start_inline()
-        user_states[user_id] = {'state': 'searching_movie'}
-        await message.answer(f"<b>👋Salom {first_name}</b>\n\n<i>Kino kodini kiriting...</i>", reply_markup=keyboard,
-                             parse_mode='html')
-    else:
-        await send_subscription_prompt(message)
+
 async def manage_channel(callback_query: CallbackQuery):
     user_id = callback_query.from_user.id
     if user_id not in ADMINS:
